@@ -65,3 +65,11 @@ cc: c=c:c ## Clear the cache
 cc: sf
 
 ## —— Yarn 🧶 ————————————————
+yarn-install: ## Install yarn dependencies
+	@$(YARN) install
+
+yarn-dev: ## Install yarn dependencies in dev mode
+	@$(YARN) dev
+
+yarn-build: ## Build the assets
+	@$(YARN) build
