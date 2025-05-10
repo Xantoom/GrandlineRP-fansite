@@ -6,6 +6,10 @@
         "build": "vite build"
     },
     "devDependencies": {
+        "@hotwired/stimulus": "^3.0.0",
+        "@symfony/ux-react": "file:vendor/symfony/ux-react/assets",
+        "react": "^19.1",
+        "react-dom": "^19.1",
         "vite": "^6.0",
         "vite-plugin-symfony": "^8.0"
     },

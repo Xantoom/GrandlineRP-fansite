@@ -68,6 +68,14 @@ cc: sf
 yarn-install: ## Install yarn dependencies
 	@$(YARN) install
 
+yarn-add: ## Add a yarn dependency, pass the parameter "c=" to add a given dependency
+	@$(eval c ?=)
+	@$(YARN) add $(c)
+
+yarn-remove: ## Remove a yarn dependency, pass the parameter "c=" to remove a given dependency
+	@$(eval c ?=)
+	@$(YARN) remove $(c)
+
 yarn-dev: ## Install yarn dependencies in dev mode
 	@$(YARN) dev
 

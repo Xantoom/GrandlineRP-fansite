@@ -21,6 +21,7 @@
         "symfony/framework-bundle": "7.3.*",
         "symfony/runtime": "7.3.*",
         "symfony/twig-bundle": "7.3.*",
+        "symfony/ux-react": "^2.24",
         "symfony/yaml": "7.3.*"
     },
     "config": {
