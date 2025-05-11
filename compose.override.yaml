@@ -1,6 +1,7 @@
 # Development environment override
 services:
     php:
+        # Prevent git warning about the working directory being unsafe
         command: >
             sh -c "git config --global --add safe.directory /app && frankenphp run --config /etc/caddy/Caddyfile"
         build:

@@ -3,7 +3,8 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+	    "lint": "eslint --fix"
     },
     "devDependencies": {
         "@eslint/js": "^9.26.0",

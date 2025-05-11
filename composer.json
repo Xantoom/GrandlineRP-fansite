@@ -79,6 +79,7 @@
         }
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.75",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^2.1",
         "phpstan/phpstan-beberlei-assert": "^2.0",

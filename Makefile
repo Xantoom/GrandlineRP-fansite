@@ -2,14 +2,21 @@
 DOCKER_COMP = docker compose
 
 # Docker containers
-PHP_CONT = $(DOCKER_COMP) exec php
+PHP_CONT 	= $(DOCKER_COMP) exec php
 
-# Executables
-PHP      = $(PHP_CONT) php
-COMPOSER = $(PHP_CONT) composer
-SYMFONY  = $(PHP) bin/console
-YARN     = $(PHP_CONT) yarn
-NPX		 = $(PHP_CONT) npx
+# Executables PHP
+PHP      	= $(PHP_CONT) php
+COMPOSER 	= $(PHP_CONT) composer
+SYMFONY  	= $(PHP) bin/console
+
+# Executables JS
+YARN     	= $(PHP_CONT) yarn
+NPX		 	= $(PHP_CONT) npx
+
+# Executables Code-Quality
+PHPSTAN  	= $(PHP_CONT) vendor/bin/phpstan
+PHPCSFIXER 	= $(PHP_CONT) vendor/bin/php-cs-fixer
+ESLINT   	= $(YARN) lint
 
 # Misc
 .DEFAULT_GOAL = help
@@ -115,10 +122,17 @@ npx: ## Run npx
 	@$(NPX) $(c)
 
 # Code-Quality 🧪 —————————————————————————————————————————
+## Run all code quality tools
+code-quality: phpstan php-cs-fixer eslint
+
+phpstan: ## Run phpstan
+	@$(eval c ?=)
+	@$(PHPSTAN) analyse $(c)
+
 php-cs-fixer: ## Run php-cs-fixer
 	@$(eval c ?=)
-	@$(PHP_CONT) php-cs-fixer $(c)
+	@$(PHPCSFIXER) fix $(c)
 
 eslint: ## Run eslint
 	@$(eval c ?=)
-	@$(NPX) eslint $(c) --fix
+	@$(ESLINT) $(c)
