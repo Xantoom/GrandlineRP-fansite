@@ -31,6 +31,13 @@ export default defineConfig([
 		files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
 		plugins: {
 			prettier: prettierPlugin,
+			react: pluginReact,
+		},
+		// Add settings for React version
+		settings: {
+			react: {
+				version: 'detect', // Automatically detect React version from your package.json
+			},
 		},
 		rules: {
 			'prettier/prettier': [

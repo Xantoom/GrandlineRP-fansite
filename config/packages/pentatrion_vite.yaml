@@ -1,1 +1,7 @@
+# config/packages/pentatrion_vite.yaml
 pentatrion_vite:
+    preload: link-header
+
+when@prod:
+    pentatrion_vite:
+        cache: true
