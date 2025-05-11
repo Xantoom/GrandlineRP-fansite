@@ -15,7 +15,6 @@ NPX		 	= $(PHP_CONT) npx
 
 # Executables Code-Quality
 PHPSTAN  	= $(PHP_CONT) vendor/bin/phpstan
-PHPCSFIXER 	= $(PHP_CONT) vendor/bin/php-cs-fixer
 ESLINT   	= $(YARN) lint
 
 # Misc
@@ -78,6 +77,10 @@ composer-require-dev: ## Require a composer dependency in dev mode, pass the par
 	@$(eval c ?=)
 	@$(COMPOSER) require $(c) --dev
 
+composer-remove: ## Remove a composer dependency, pass the parameter "c=" to remove a given dependency
+	@$(eval c ?=)
+	@$(COMPOSER) remove $(c)
+
 vendor: ## Install vendors according to the current composer.lock file
 vendor: c=install --prefer-dist --no-dev --no-progress --no-scripts --no-interaction
 vendor: composer
@@ -123,15 +126,11 @@ npx: ## Run npx
 
 # Code-Quality 🧪 —————————————————————————————————————————
 ## Run all code quality tools
-code-quality: phpstan php-cs-fixer eslint
+code-quality: phpstan eslint
 
 phpstan: ## Run phpstan
 	@$(eval c ?=)
 	@$(PHPSTAN) analyse $(c)
-
-php-cs-fixer: ## Run php-cs-fixer
-	@$(eval c ?=)
-	@$(PHPCSFIXER) fix $(c)
 
 eslint: ## Run eslint
 	@$(eval c ?=)
