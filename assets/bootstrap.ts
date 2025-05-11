@@ -5,6 +5,7 @@ import { type ReactModule, registerReactControllerComponents } from 'vite-plugin
 registerReactControllerComponents(import.meta.glob<ReactModule>('./react/controllers/**/*.ts(x)?'));
 
 const app = startStimulusApp();
+app.debug = false;
 registerControllers(
 	app,
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment

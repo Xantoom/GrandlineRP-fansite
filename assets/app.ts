@@ -1,2 +1,1 @@
-import './bootstrap.ts';
-import './app.css';
+import '@assets/bootstrap';

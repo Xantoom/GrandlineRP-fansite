@@ -30,17 +30,13 @@ export default defineConfig({
 		host: '0.0.0.0',
 		strictPort: true,
 		https: true,
-		watch: {
-			ignored: ['**/!(assets)/**'],
-		},
 		fs: {
 			allow: ['.', sharedDir],
 		},
 	},
 	resolve: {
 		alias: {
-			'@': './assets',
-			'~': './node_modules',
+			'@assets': resolve(basicPlaygroundDir, 'assets'),
 		},
 	},
 });
