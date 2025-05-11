@@ -6,12 +6,30 @@
         "build": "vite build"
     },
     "devDependencies": {
+        "@eslint/js": "^9.26.0",
         "@hotwired/stimulus": "^3.0.0",
+        "@symfony/stimulus-bridge": "^3.2.0 || ^4.0.0",
         "@symfony/ux-react": "file:vendor/symfony/ux-react/assets",
-        "react": "^19.1",
-        "react-dom": "^19.1",
+        "@vitejs/plugin-basic-ssl": "^2.0.0",
+        "@vitejs/plugin-react": "^4.4.1",
+        "eslint": "^9.26.0",
+        "eslint-config-prettier": "^10.1.5",
+        "eslint-plugin-prettier": "^5.4.0",
+        "eslint-plugin-react": "^7.37.5",
+        "globals": "^16.1.0",
+        "prettier": "3.5.3",
+        "react": "^18.0",
+        "react-dom": "^18.0",
+        "sass": "^1.88.0",
+        "typescript": "^5.8.3",
+        "typescript-eslint": "^8.32.0",
         "vite": "^6.0",
+        "vite-plugin-mkcert": "^1.17.8",
         "vite-plugin-symfony": "^8.0"
     },
-    "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+    "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+    "dependencies": {
+        "@tailwindcss/vite": "^4.1.6",
+        "tailwindcss": "^4.1.6"
+    }
 }

@@ -9,6 +9,7 @@ PHP      = $(PHP_CONT) php
 COMPOSER = $(PHP_CONT) composer
 SYMFONY  = $(PHP) bin/console
 YARN     = $(PHP_CONT) yarn
+NPX		 = $(PHP_CONT) npx
 
 # Misc
 .DEFAULT_GOAL = help
@@ -29,6 +30,8 @@ start: build up ## Build and start the containers
 
 down: ## Stop the docker hub
 	@$(DOCKER_COMP) down --remove-orphans
+
+restart: down up ## Restart the docker hub
 
 logs: ## Show live logs
 	@$(DOCKER_COMP) logs --tail=0 --follow
@@ -52,25 +55,49 @@ composer: ## Run composer, pass the parameter "c=" to run a given command, examp
 	@$(eval c ?=)
 	@$(COMPOSER) $(c)
 
+composer-install: ## Install composer dependencies
+	@$(eval c ?=)
+	@$(COMPOSER) install --prefer-dist --no-progress --no-scripts --no-interaction
+
+composer-update: ## Update composer dependencies
+	@$(eval c ?=)
+	@$(COMPOSER) update --prefer-dist --no-progress --no-scripts --no-interaction
+
+composer-require: ## Require a composer dependency, pass the parameter "c=" to add a given dependency
+	@$(eval c ?=)
+	@$(COMPOSER) require $(c)
+
+composer-require-dev: ## Require a composer dependency in dev mode, pass the parameter "c=" to add a given
+	@$(eval c ?=)
+	@$(COMPOSER) require $(c) --dev
+
 vendor: ## Install vendors according to the current composer.lock file
 vendor: c=install --prefer-dist --no-dev --no-progress --no-scripts --no-interaction
 vendor: composer
 
 ## —— Symfony 🎵 ———————————————————————————————————————————————————————————————
-sf: ## List all Symfony commands or pass the parameter "c=" to run a given command, example: make sf c=about
+symfony: ## List all Symfony commands or pass the parameter "c=" to run a given command, example: make sf c=about
 	@$(eval c ?=)
 	@$(SYMFONY) $(c)
 
 cc: c=c:c ## Clear the cache
-cc: sf
+cc: symfony
 
 ## —— Yarn 🧶 ————————————————
+yarn: ## Run yarn
+	@$(eval c ?=)
+	@$(YARN) $(c)
+
 yarn-install: ## Install yarn dependencies
 	@$(YARN) install
 
 yarn-add: ## Add a yarn dependency, pass the parameter "c=" to add a given dependency
 	@$(eval c ?=)
 	@$(YARN) add $(c)
+
+yarn-add-dev: ## Add a yarn dependency in dev mode, pass the parameter "c=" to add a given
+	@$(eval c ?=)
+	@$(YARN) add $(c) --dev
 
 yarn-remove: ## Remove a yarn dependency, pass the parameter "c=" to remove a given dependency
 	@$(eval c ?=)
@@ -81,3 +108,17 @@ yarn-dev: ## Install yarn dependencies in dev mode
 
 yarn-build: ## Build the assets
 	@$(YARN) build
+
+# NPX 🧶 ———————————————————————————————————————————————
+npx: ## Run npx
+	@$(eval c ?=)
+	@$(NPX) $(c)
+
+# Code-Quality 🧪 —————————————————————————————————————————
+php-cs-fixer: ## Run php-cs-fixer
+	@$(eval c ?=)
+	@$(PHP_CONT) php-cs-fixer $(c)
+
+eslint: ## Run eslint
+	@$(eval c ?=)
+	@$(NPX) eslint $(c) --fix

@@ -1,0 +1,39 @@
+import js from "@eslint/js";
+import prettierConfig from "eslint-config-prettier";
+import prettierPlugin from "eslint-plugin-prettier";
+import pluginReact from "eslint-plugin-react";
+import { defineConfig } from "eslint/config";
+import globals from "globals";
+import tseslint from "typescript-eslint";
+
+export default defineConfig([
+	{
+		ignores: ["**/!(assets)/**"],
+	},
+	{
+		files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
+		plugins: { js },
+		extends: ["js/recommended"],
+	},
+	{
+		files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
+		languageOptions: { globals: globals.browser },
+	},
+	tseslint.configs.recommended,
+	pluginReact.configs.flat.recommended,
+	{
+		files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
+		plugins: {
+			prettier: prettierPlugin,
+		},
+		rules: {
+			"prettier/prettier": [
+				"error",
+				{
+					// This will use your .prettierrc settings
+				},
+			],
+			...prettierConfig.rules,
+		},
+	},
+]);
