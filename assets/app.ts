@@ -1,4 +1,4 @@
-import "./bootstrap.ts";
-import "./app.css";
+import './bootstrap.ts';
+import './app.css';
 
-console.log("Happy coding !!");
+console.log('Happy coding !!');

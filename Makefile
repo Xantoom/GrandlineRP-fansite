@@ -19,7 +19,10 @@ ESLINT   	= $(YARN) lint
 
 # Misc
 .DEFAULT_GOAL = help
-.PHONY        : help build up start down logs sh composer vendor sf cc test
+.PHONY        : help build up start down logs sh composer vendor sf cc test permissions \
+				composer-install composer-update composer-require composer-require-dev composer-remove \
+				symfony yarn yarn-install yarn-add yarn-add-dev yarn-remove yarn-dev yarn-build \
+				npx code-quality phpstan eslint
 
 ## —— 🎵 🐳 The Symfony Docker Makefile 🐳 🎵 ——————————————————————————————————
 help: ## Outputs this help screen

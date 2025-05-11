@@ -4,11 +4,12 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-	    "lint": "eslint --fix"
+        "lint": "eslint --fix"
     },
     "devDependencies": {
         "@eslint/js": "^9.26.0",
         "@hotwired/stimulus": "^3.0.0",
+        "@stylistic/eslint-plugin-ts": "^4.2.0",
         "@symfony/stimulus-bridge": "^3.2.0 || ^4.0.0",
         "@symfony/ux-react": "file:vendor/symfony/ux-react/assets",
         "@vitejs/plugin-basic-ssl": "^2.0.0",
