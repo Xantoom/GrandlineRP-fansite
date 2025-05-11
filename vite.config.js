@@ -11,7 +11,9 @@ const sharedDir = resolve(basicPlaygroundDir, '../../shared');
 
 export default defineConfig({
 	plugins: [
-		reactPlugin(),
+		reactPlugin({
+			fastRefresh: true,
+		}),
 		symfonyPlugin({
 			stimulus: true,
 			viteDevServerHostname: 'localhost',
@@ -25,6 +27,9 @@ export default defineConfig({
 				app: './assets/app.ts',
 			},
 		},
+		target: 'esnext',
+		minify: 'esbuild',
+		cssMinify: 'lightningcss',
 	},
 	server: {
 		host: '0.0.0.0',
@@ -33,11 +38,20 @@ export default defineConfig({
 		fs: {
 			allow: ['.', sharedDir],
 		},
+		hmr: {
+			overlay: true,
+			protocol: 'wss',
+		},
 	},
 	resolve: {
 		alias: {
 			'@assets': resolve(basicPlaygroundDir, 'assets'),
 			'@node_modules': resolve(basicPlaygroundDir, 'node_modules'),
 		},
+		extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.scss', '.sass'],
 	},
+	optimizeDeps: {
+		include: ['react', 'react-dom'],
+	},
+	cacheDir: 'node_modules/.vite',
 });
