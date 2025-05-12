@@ -128,7 +128,6 @@ npx: ## Run npx
 	@$(NPX) $(c)
 
 # Code-Quality 🧪 —————————————————————————————————————————
-## Run all code quality tools
 code-quality: phpstan eslint
 
 phpstan: ## Run phpstan
