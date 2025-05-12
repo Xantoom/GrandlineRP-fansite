@@ -18,7 +18,7 @@
         "symfony/asset": "7.3.*",
         "symfony/console": "7.3.*",
         "symfony/dotenv": "7.3.*",
-        "symfony/flex": "^2.5",
+        "symfony/flex": "^2.5.1",
         "symfony/framework-bundle": "7.3.*",
         "symfony/runtime": "7.3.*",
         "symfony/security-bundle": "7.3.*",
@@ -73,6 +73,9 @@
         "symfony/symfony": "*"
     },
     "extra": {
+	    "runtime": {
+		    "dotenv_overload": true
+	    },
         "symfony": {
             "allow-contrib": true,
             "require": "7.3.*",
@@ -80,11 +83,11 @@
         }
     },
     "require-dev": {
-        "phpstan/extension-installer": "^1.4",
-        "phpstan/phpstan": "^2.1",
-        "phpstan/phpstan-beberlei-assert": "^2.0",
-        "phpstan/phpstan-doctrine": "^2.0",
-        "phpstan/phpstan-symfony": "^2.0",
+        "phpstan/extension-installer": "^1.4.3",
+        "phpstan/phpstan": "^2.1.14",
+        "phpstan/phpstan-beberlei-assert": "^2.0.1",
+        "phpstan/phpstan-doctrine": "^2.0.3",
+        "phpstan/phpstan-symfony": "^2.0.4",
         "roave/security-advisories": "dev-latest",
         "symfony/maker-bundle": "^1.63",
         "symfony/stopwatch": "7.3.*",
