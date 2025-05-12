@@ -5,7 +5,7 @@
 Fansite du projet FiveM (GTA RP) **GrandlineRP** fondé par LolyPokicake et Aminematue. \
 Non affilié à l'équipe de GrandlineRP.
 
-## ✨ Caractéristiques
+## ✨ Technologies
 
 - 🐘 **PHP 8.4**
 - 🧩 **Symfony 7.3**
