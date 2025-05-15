@@ -1,14 +1,12 @@
-# .github/workflows/main.yml
-name: Main Branch CI
+# .github/workflows/production.yml
+name: Production Deployment
 
 on:
     push:
-        branches: [ main ]
-    pull_request:
-        branches: [ main ]
+        branches: [production]
 
 jobs:
-    code-quality:
+    build-and-deploy:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
@@ -30,13 +28,45 @@ jobs:
               run: composer validate --strict
 
             - name: Install PHP dependencies
-              run: composer install --prefer-dist --no-progress
+              run: composer install --prefer-dist --no-progress --no-dev --optimize-autoloader
 
             - name: Install JS dependencies
               run: yarn install
 
-            - name: Run PHPStan
-              run: vendor/bin/phpstan analyse
+            - name: Build frontend assets
+              run: yarn build
 
-            - name: Run ESLint
-              run: yarn lint
+            - name: Deploy to Hostinger VPS
+              uses: appleboy/ssh-action@master
+              with:
+                  host: ${{ secrets.HOSTINGER_HOST }}
+                  username: ${{ secrets.HOSTINGER_USERNAME }}
+                  key: ${{ secrets.SSH_PRIVATE_KEY }}
+                  port: ${{ secrets.SSH_PORT || 22 }}
+                  script: |
+                      # Navigate to the project directory
+                      cd ${{ secrets.PROJECT_PATH }}
+
+                      # Pull the latest changes from production branch
+                      git fetch origin production
+                      git checkout production
+                      git pull origin production
+
+                      # Create .env.local with secrets
+                      cat > .env.local << EOF
+                      APP_ENV=prod
+                      APP_DEBUG=0
+                      APP_SECRET=${{ secrets.APP_SECRET }}
+                      DATABASE_URL=${{ secrets.DATABASE_URL }}
+                      MAILER_DSN=${{ secrets.MAILER_DSN }}
+                      EOF
+
+                      # Build and start the containers in production mode
+                      docker compose -f compose.yaml -f compose.prod.yaml down
+                      docker compose -f compose.yaml -f compose.prod.yaml up -d --build
+
+                      # Run migrations if needed
+                      docker compose -f compose.yaml -f compose.prod.yaml exec php php bin/console doctrine:migrations:migrate --no-interaction
+
+                      # Clear cache
+                      docker compose -f compose.yaml -f compose.prod.yaml exec php php bin/console cache:clear
