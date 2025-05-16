@@ -8,14 +8,8 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default defineConfig([
-	{
-		ignores: ['**/!(assets)/**'],
-	},
-	{
-		plugins: {
-			'@stylistic/ts': stylisticTs,
-		},
-	},
+	{ ignores: ['**/!(assets)/**'] },
+	{ plugins: { '@stylistic/ts': stylisticTs } },
 	{
 		files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
 		plugins: { js },
@@ -33,19 +27,9 @@ export default defineConfig([
 			prettier: prettierPlugin,
 			react: pluginReact,
 		},
-		// Add settings for React version
-		settings: {
-			react: {
-				version: 'detect', // Automatically detect React version from your package.json
-			},
-		},
+		settings: { react: { version: 'detect' } },
 		rules: {
-			'prettier/prettier': [
-				'error',
-				{
-					// This will use your .prettierrc settings
-				},
-			],
+			'prettier/prettier': ['error', {}],
 			...prettierConfig.rules,
 		},
 	},

@@ -8,7 +8,6 @@ import symfonyPlugin from 'vite-plugin-symfony';
 
 const basicPlaygroundDir = dirname(fileURLToPath(import.meta.url));
 const sharedDir = resolve(basicPlaygroundDir, '../../shared');
-
 export default defineConfig({
 	plugins: [
 		reactPlugin({
@@ -26,10 +25,15 @@ export default defineConfig({
 			input: {
 				app: './assets/app.ts',
 			},
+			output: {
+				manualChunks: {
+					vendor: ['react', 'react-dom'],
+					ui: ['tailwindcss', 'daisyui'],
+				},
+			},
 		},
 		target: 'esnext',
 		minify: 'esbuild',
-		cssMinify: 'lightningcss',
 	},
 	server: {
 		host: '0.0.0.0',
@@ -41,6 +45,7 @@ export default defineConfig({
 		hmr: {
 			overlay: true,
 			protocol: 'wss',
+			timeout: 60000,
 		},
 	},
 	resolve: {
@@ -51,7 +56,11 @@ export default defineConfig({
 		extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.scss', '.sass'],
 	},
 	optimizeDeps: {
-		include: ['react', 'react-dom'],
+		include: ['react', 'react-dom', 'react/jsx-runtime', '@tanstack/react-query', '@tanstack/react-form'],
+		esbuildOptions: {
+			target: 'esnext',
+			jsx: 'automatic',
+		},
 	},
 	cacheDir: 'node_modules/.vite',
 });

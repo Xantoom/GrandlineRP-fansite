@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html
+	lang="fr"
+	data-theme="light-theme">
     <head>
 	    <meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,13 +11,14 @@
 	    <title>{% block title %}{% endblock %} - GrandlineRP - Fansite</title>
 	    <meta name="description" content="Fansite non affilié au staff de GrandlineRP. Retrouvez ici toutes les informations sur les arcs, les personnages, les documents et bien plus encore !">
 
-	    {{ vite_entry_link_tags('app') }}
         {% block stylesheets %}{% endblock %}
 
 	    {{ vite_entry_script_tags('app', { dependency: 'react' }) }}
         {% block javascripts %}{% endblock %}
     </head>
-    <body>
+    <body
+	    class="bg-white dark:bg-black"
+    >
         {% block body %}{% endblock %}
     </body>
 </html>
