@@ -9,18 +9,8 @@ import symfonyPlugin from 'vite-plugin-symfony';
 const basicPlaygroundDir = dirname(fileURLToPath(import.meta.url));
 const sharedDir = resolve(basicPlaygroundDir, '../../shared');
 export default defineConfig({
-	plugins: [
-		reactPlugin({
-			fastRefresh: true,
-		}),
-		symfonyPlugin({
-			stimulus: true,
-			viteDevServerHostname: 'localhost',
-		}),
-		mkcertPlugin(),
-		tailwindcss(),
-	],
 	build: {
+		minify: 'esbuild',
 		rollupOptions: {
 			input: {
 				app: './assets/app.ts',
@@ -33,12 +23,34 @@ export default defineConfig({
 			},
 		},
 		target: 'esnext',
-		minify: 'esbuild',
+	},
+	cacheDir: 'node_modules/.vite',
+	optimizeDeps: {
+		include: ['react', 'react-dom', 'react/jsx-runtime', '@tanstack/react-query', '@tanstack/react-form'],
+		esbuildOptions: {
+			target: 'esnext',
+			jsx: 'automatic',
+		},
+	},
+	plugins: [
+		reactPlugin({
+			fastRefresh: true,
+		}),
+		symfonyPlugin({
+			stimulus: true,
+			viteDevServerHostname: 'localhost',
+		}),
+		mkcertPlugin(),
+		tailwindcss(),
+	],
+	resolve: {
+		alias: {
+			'@assets': resolve(basicPlaygroundDir, 'assets'),
+			'@node_modules': resolve(basicPlaygroundDir, 'node_modules'),
+		},
+		extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.scss', '.sass'],
 	},
 	server: {
-		host: '0.0.0.0',
-		strictPort: true,
-		https: true,
 		fs: {
 			allow: ['.', sharedDir],
 		},
@@ -47,20 +59,8 @@ export default defineConfig({
 			protocol: 'wss',
 			timeout: 60000,
 		},
+		host: '0.0.0.0',
+		https: true,
+		strictPort: true,
 	},
-	resolve: {
-		alias: {
-			'@assets': resolve(basicPlaygroundDir, 'assets'),
-			'@node_modules': resolve(basicPlaygroundDir, 'node_modules'),
-		},
-		extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.scss', '.sass'],
-	},
-	optimizeDeps: {
-		include: ['react', 'react-dom', 'react/jsx-runtime', '@tanstack/react-query', '@tanstack/react-form'],
-		esbuildOptions: {
-			target: 'esnext',
-			jsx: 'automatic',
-		},
-	},
-	cacheDir: 'node_modules/.vite',
 });

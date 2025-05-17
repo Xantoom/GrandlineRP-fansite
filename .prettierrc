@@ -7,8 +7,7 @@
 	"arrowParens": "avoid",
 	"endOfLine": "lf",
 	"singleQuote": true,
-	"printWidth": 240,
-	"singleAttributePerLine": false,
+	"printWidth": 360,
 	"tailwindStylesheet": "./assets/styles/theme.css",
 	"plugins": [
 		"prettier-plugin-organize-imports",

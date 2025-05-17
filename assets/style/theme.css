@@ -25,23 +25,24 @@
 
 	--color-base-content: var(--color-base-7);
 
-	/* Couleurs sémantiques */
-	--color-primary: oklch(0.67 0.18 19);
-	--color-primary-content: oklch(0.9 0.11 86);
-	--color-secondary: oklch(0.48 0.16 358);
-	--color-secondary-content: oklch(0.9 0.11 86);
-	--color-accent: oklch(0.82 0.13 66);
-	--color-accent-content: oklch(0.25 0.12 305);
-	--color-neutral: oklch(0.57 0.20 5);
-	--color-neutral-content: oklch(0.9 0.11 86);
-	--color-info: oklch(0.67 0.18 19);
-	--color-info-content: oklch(0.9 0.11 86);
-	--color-success: oklch(0.57 0.20 5);
-	--color-success-content: oklch(0.9 0.11 86);
-	--color-warning: oklch(0.82 0.13 66);
-	--color-warning-content: oklch(0.25 0.12 305);
-	--color-error: oklch(0.48 0.16 358);
-	--color-error-content: oklch(0.9 0.11 86);
+	/* Light Theme Semantic Colors */
+	--color-primary: oklch(0.65 0.28 360);        /* Neon red */
+	--color-primary-content: oklch(0.98 0.005 86);
+	--color-secondary: oklch(0.75 0.26 245);      /* Electric purple */
+	--color-secondary-content: oklch(0.98 0.005 86);
+	--color-accent: oklch(0.85 0.25 180);         /* Aqua/teal */
+	--color-accent-content: oklch(0.2 0.05 305);
+	--color-neutral: oklch(0.57 0.12 320);        /* Muted purple */
+	--color-neutral-content: oklch(0.98 0.005 86);
+	--color-info: oklch(0.7 0.25 220);            /* Bright blue */
+	--color-info-content: oklch(0.98 0.005 86);
+	--color-success: oklch(0.75 0.25 150);        /* Miami green */
+	--color-success-content: oklch(0.98 0.005 86);
+	--color-warning: oklch(0.8 0.25 110);         /* Lime yellow */
+	--color-warning-content: oklch(0.2 0.05 305);
+	--color-error: oklch(0.65 0.3 30);            /* Hot orange */
+	--color-error-content: oklch(0.98 0.005 86);
+
 
 	/* border radius */
 	--radius-selector: 1rem;
@@ -81,23 +82,23 @@
 
 	--color-base-content: var(--color-base-1);
 
-	/* Couleurs sémantiques */
-	--color-primary: oklch(0.67 0.18 19);
-	--color-primary-content: oklch(0.9 0.11 86);
-	--color-secondary: oklch(0.48 0.16 358);
-	--color-secondary-content: oklch(0.9 0.11 86);
-	--color-accent: oklch(0.82 0.13 66);
-	--color-accent-content: oklch(0.25 0.12 305);
-	--color-neutral: oklch(0.57 0.20 5);
-	--color-neutral-content: oklch(0.9 0.11 86);
-	--color-info: oklch(0.67 0.18 19);
-	--color-info-content: oklch(0.9 0.11 86);
-	--color-success: oklch(0.57 0.20 5);
-	--color-success-content: oklch(0.9 0.11 86);
-	--color-warning: oklch(0.82 0.13 66);
-	--color-warning-content: oklch(0.25 0.12 305);
-	--color-error: oklch(0.48 0.16 358);
-	--color-error-content: oklch(0.9 0.11 86);
+	/* Dark Theme Semantic Colors */
+	--color-primary: oklch(0.7 0.3 360);          /* Saturated neon red */
+	--color-primary-content: oklch(0.98 0.005 86);
+	--color-secondary: oklch(0.78 0.28 245);      /* Vibrant electric purple */
+	--color-secondary-content: oklch(0.98 0.005 86);
+	--color-accent: oklch(0.88 0.28 180);         /* Bright aqua/teal */
+	--color-accent-content: oklch(0.15 0.05 305);
+	--color-neutral: oklch(0.6 0.15 320);         /* Rich muted purple */
+	--color-neutral-content: oklch(0.98 0.005 86);
+	--color-info: oklch(0.75 0.28 220);           /* Intense bright blue */
+	--color-info-content: oklch(0.98 0.005 86);
+	--color-success: oklch(0.78 0.28 150);        /* Vibrant Miami green */
+	--color-success-content: oklch(0.98 0.005 86);
+	--color-warning: oklch(0.83 0.28 110);        /* Bright lime yellow */
+	--color-warning-content: oklch(0.15 0.05 305);
+	--color-error: oklch(0.7 0.32 30);            /* Intense hot orange */
+	--color-error-content: oklch(0.98 0.005 86);
 
 	/* border radius */
 	--radius-selector: 1rem;
