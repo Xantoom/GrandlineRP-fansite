@@ -1,6 +1,8 @@
 # Development environment override
 services:
     php:
+        env_file:
+            - .env.dev
         # Prevent git warning about the working directory being unsafe
         command: >
             sh -c "git config --global --add safe.directory /app && frankenphp run --config /etc/caddy/Caddyfile"
@@ -31,12 +33,22 @@ services:
 
     ###> doctrine/doctrine-bundle ###
     database:
-        ports:
-            - "5432:5432"
+        env_file:
+            - .env.dev
     ###< doctrine/doctrine-bundle ###
+
+    minio:
+        env_file:
+            - .env.dev
+
+    createbuckets:
+        env_file:
+            - .env.dev
 
     ###> symfony/mailer ###
     mailer:
+        env_file:
+            - .env.dev
         image: axllent/mailpit
         ports:
             - "1025:1025"

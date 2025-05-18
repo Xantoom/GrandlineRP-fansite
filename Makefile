@@ -32,8 +32,8 @@ help: ## Outputs this help screen
 build: ## Builds the Docker images
 	@$(DOCKER_COMP) build --pull --no-cache
 
-up: ## Start the docker hub in detached mode (no logs)
-	@$(DOCKER_COMP) up --detach
+up: ## Start the docker hub
+	@$(DOCKER_COMP) --env-file .env.dev up --detach
 
 start: build up ## Build and start the containers
 
@@ -50,6 +50,9 @@ sh: ## Connect to the FrankenPHP container
 
 bash: ## Connect to the FrankenPHP container via bash so up and down arrows go to previous commands
 	@$(PHP_CONT) bash
+
+prune-project: ## Remove all stopped containers, dangling images and unused networks
+	@$(DOCKER_COMP) down --volumes --remove-orphans --rmi local
 
 test: ## Start tests with phpunit, pass the parameter "c=" to add options to phpunit, example: make test c="--group e2e --stop-on-failure"
 	@$(eval c ?=)
