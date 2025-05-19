@@ -45,8 +45,8 @@ export default defineConfig({
 	],
 	resolve: {
 		alias: {
-			'@assets': resolve(basicPlaygroundDir, 'assets'),
-			'@node_modules': resolve(basicPlaygroundDir, 'node_modules'),
+			assets: resolve(basicPlaygroundDir, 'assets'),
+			node_modules: resolve(basicPlaygroundDir, 'node_modules'),
 		},
 		extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.scss', '.sass'],
 	},
