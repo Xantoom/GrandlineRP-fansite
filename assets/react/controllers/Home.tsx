@@ -1,4 +1,4 @@
-import { useTheme } from 'assets/react/hooks/useTheme';
+import { useTheme } from '@/react/hooks/useTheme';
 import React from 'react';
 
 export default function (props: { fullName: string }) {

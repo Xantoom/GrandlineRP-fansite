@@ -45,8 +45,8 @@ export default defineConfig({
 	],
 	resolve: {
 		alias: {
-			assets: resolve(basicPlaygroundDir, 'assets'),
-			node_modules: resolve(basicPlaygroundDir, 'node_modules'),
+			'@': fileURLToPath(new URL('./assets', import.meta.url)),
+			'~': fileURLToPath(new URL('./node_modules', import.meta.url)),
 		},
 		extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.scss', '.sass'],
 	},
