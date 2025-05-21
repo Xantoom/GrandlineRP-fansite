@@ -1,5 +1,6 @@
 services:
     php:
+        stop_grace_period: 1s
         image: ${IMAGES_PREFIX:-}app-php
         restart: unless-stopped
         environment:
