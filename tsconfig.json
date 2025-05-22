@@ -3,39 +3,30 @@
 		"baseUrl": "./",
 		"paths": {
 			"@/*": ["./assets/*"],
-			"~/*": ["./node_modules/*"],
+			"~/*": ["./node_modules/*"]
 		},
-		"target": "ES2020",
-		"lib": [
-			"dom",
-			"dom.iterable",
-			"ES2020"
-		],
+		"target": "ES2024",
+		"module": "ES2022",
+		"lib": ["dom", "dom.iterable", "ES2024"],
 		"allowJs": true,
 		"skipLibCheck": true,
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
 		"strict": true,
 		"forceConsistentCasingInFileNames": true,
-		"module": "ESNext",
 		"moduleResolution": "bundler",
 		"isolatedModules": true,
 		"resolveJsonModule": true,
 		"noEmit": true,
-		"jsx": "react",
+		"jsx": "react-jsx",
 		"sourceMap": true,
-		"declaration": true,
+		"declaration": false,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"incremental": true,
 		"noFallthroughCasesInSwitch": true,
-		"types": ["vite/client"]
+		"types": ["vite/client", "node"]
 	},
-	"include": [
-		"**/assets/**",
-	],
-	"exclude": [
-		"**/node_modules/**",
-		"**/build/**"
-	]
+	"include": ["assets/**/*"],
+	"exclude": ["node_modules", "public", "var", "vendor"]
 }

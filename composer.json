@@ -9,7 +9,7 @@
         "php": ">=8.4.6",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "aws/aws-sdk-php": "^3.343.13",
+        "aws/aws-sdk-php": "^3.343.16",
         "doctrine/dbal": "^3.9.4",
         "doctrine/doctrine-bundle": "^2.14",
         "doctrine/doctrine-migrations-bundle": "^3.4.2",
@@ -19,12 +19,12 @@
         "symfony/asset": "7.3.*",
         "symfony/console": "7.3.*",
         "symfony/dotenv": "7.3.*",
-        "symfony/flex": "^2.5.1",
+        "symfony/flex": "^2.6.0",
         "symfony/framework-bundle": "7.3.*",
         "symfony/runtime": "7.3.*",
         "symfony/security-bundle": "7.3.*",
         "symfony/twig-bundle": "7.3.*",
-        "symfony/ux-react": "^2.25.1",
+        "symfony/ux-react": "^2.25.2",
         "symfony/web-link": "7.3.*",
         "symfony/yaml": "7.3.*"
     },
@@ -80,12 +80,13 @@
         "symfony": {
             "allow-contrib": true,
             "require": "7.3.*",
-            "docker": true
+            "docker": true,
+            "flex.synchronize_package_json": "false"
         }
     },
     "require-dev": {
         "phpstan/extension-installer": "^1.4.3",
-        "phpstan/phpstan": "^2.1.16",
+        "phpstan/phpstan": "^2.1.17",
         "phpstan/phpstan-beberlei-assert": "^2.0.1",
         "phpstan/phpstan-doctrine": "^2.0.3",
         "phpstan/phpstan-symfony": "^2.0.6",

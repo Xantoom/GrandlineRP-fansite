@@ -6,8 +6,8 @@ import { defineConfig } from 'vite';
 import mkcertPlugin from 'vite-plugin-mkcert';
 import symfonyPlugin from 'vite-plugin-symfony';
 
-const basicPlaygroundDir = dirname(fileURLToPath(import.meta.url));
-const sharedDir = resolve(basicPlaygroundDir, '../../shared');
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 export default defineConfig({
 	build: {
 		minify: 'esbuild',
@@ -19,14 +19,16 @@ export default defineConfig({
 				manualChunks: {
 					vendor: ['react', 'react-dom'],
 					ui: ['tailwindcss', 'daisyui'],
+					tanstack: ['@tanstack/react-query', '@tanstack/react-form', '@tanstack/react-table'],
 				},
 			},
 		},
 		target: 'esnext',
+		sourcemap: true,
 	},
 	cacheDir: 'node_modules/.vite',
 	optimizeDeps: {
-		include: ['react', 'react-dom', 'react/jsx-runtime', '@tanstack/react-query', '@tanstack/react-form'],
+		include: ['react', 'react-dom', 'react/jsx-runtime'],
 		esbuildOptions: {
 			target: 'esnext',
 			jsx: 'automatic',
@@ -35,6 +37,7 @@ export default defineConfig({
 	plugins: [
 		reactPlugin({
 			fastRefresh: true,
+			jsxImportSource: 'react',
 		}),
 		symfonyPlugin({
 			stimulus: true,
@@ -45,14 +48,14 @@ export default defineConfig({
 	],
 	resolve: {
 		alias: {
-			'@': fileURLToPath(new URL('./assets', import.meta.url)),
-			'~': fileURLToPath(new URL('./node_modules', import.meta.url)),
+			'@': resolve(__dirname, './assets'),
+			'~': resolve(__dirname, './node_modules'),
 		},
-		extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.scss', '.sass'],
+		extensions: ['.js', '.ts', '.jsx', '.tsx', '.json'],
 	},
 	server: {
 		fs: {
-			allow: ['.', sharedDir],
+			allow: ['.'],
 		},
 		hmr: {
 			overlay: true,
