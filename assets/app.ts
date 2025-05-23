@@ -1,1 +1,2 @@
-import '@assets/bootstrap';
+import '@/bootstrap';
+import '@/style/theme.css';

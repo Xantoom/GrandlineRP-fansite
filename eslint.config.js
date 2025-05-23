@@ -3,19 +3,14 @@ import stylisticTs from '@stylistic/eslint-plugin-ts';
 import prettierConfig from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
 import pluginReact from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
 import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default defineConfig([
-	{
-		ignores: ['**/!(assets)/**'],
-	},
-	{
-		plugins: {
-			'@stylistic/ts': stylisticTs,
-		},
-	},
+	{ ignores: ['**/!(assets)/**', 'node_modules', 'vendor', 'public', 'var'] },
+	{ plugins: { '@stylistic/ts': stylisticTs } },
 	{
 		files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
 		plugins: { js },
@@ -23,7 +18,12 @@ export default defineConfig([
 	},
 	{
 		files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
-		languageOptions: { globals: globals.browser },
+		languageOptions: {
+			globals: {
+				...globals.browser,
+				...globals.es2024,
+			},
+		},
 	},
 	tseslint.configs.recommended,
 	pluginReact.configs.flat.recommended,
@@ -32,20 +32,23 @@ export default defineConfig([
 		plugins: {
 			prettier: prettierPlugin,
 			react: pluginReact,
+			'react-hooks': reactHooks,
 		},
-		// Add settings for React version
 		settings: {
-			react: {
-				version: 'detect', // Automatically detect React version from your package.json
+			react: { version: 'detect' },
+			'import/resolver': {
+				typescript: {
+					alwaysTryTypes: true,
+					project: './tsconfig.json',
+				},
 			},
 		},
 		rules: {
-			'prettier/prettier': [
-				'error',
-				{
-					// This will use your .prettierrc settings
-				},
-			],
+			'prettier/prettier': ['error', {}],
+			'react-hooks/rules-of-hooks': 'error',
+			'react-hooks/exhaustive-deps': 'warn',
+			'react/prop-types': 'off',
+			'react/react-in-jsx-scope': 'off',
 			...prettierConfig.rules,
 		},
 	},

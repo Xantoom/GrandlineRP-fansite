@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-	    <meta charset="UTF-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Fansite non affilié au staff de GrandlineRP. Retrouvez ici toutes les informations sur les arcs, les personnages, les documents et bien plus encore !">
+	<link rel="shortcut icon" href="{{ asset('grandlinerp-logo.ico') }}" type="image/x-icon">
 
-	    {# Primary Meta Tags #}
-	    <title>{% block title %}{% endblock %} - GrandlineRP - Fansite</title>
-	    <meta name="description" content="Fansite non affilié au staff de GrandlineRP. Retrouvez ici toutes les informations sur les arcs, les personnages, les documents et bien plus encore !">
+	<title>{% block title %}{% endblock %} - GrandlineRP - Fansite</title>
 
-	    {{ vite_entry_link_tags('app') }}
-        {% block stylesheets %}{% endblock %}
+	{% block stylesheets %}{% endblock %}
 
-	    {{ vite_entry_script_tags('app', { dependency: 'react' }) }}
-        {% block javascripts %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+	{{ vite_entry_script_tags('app', { dependency: 'react' }) }}
+	{% block javascripts %}{% endblock %}
+</head>
+<body>
+{% block body %}{% endblock %}
+</body>
 </html>

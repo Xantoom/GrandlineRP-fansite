@@ -3,22 +3,7 @@
 {% block title %}Welcome!{% endblock %}
 
 {% block body %}
-	<h1>Welcome to your new Symfony project</h1>
-
-	<p>
-		This is the start of your new Symfony project. You can customize this page by editing
-		<code>templates/home/index.html.twig</code>.
-	</p>
-
-	<p>
-		To learn more, see the documentation at
-		<a href="https://symfony.com/doc/current/index.html">symfony.com/doc/current/index.html</a>.
-	</p>
-
-	<div>
-		<h1>Symfony UX React</h1>
-		<div {{ react_component('Home', {
-			'fullName' : 'Symfony UX React',
-		}) }}></div>
-	</div>
+	<div {{ react_component('Home', {
+		'fullName' : 'Pepette',
+	}) }}></div>
 {% endblock %}
